@@ -1,0 +1,4 @@
+#puppet managed file
+<% @modules.each do |val| %>
+$ModLoad <%= val %>
+<% end %>

@@ -1,0 +1,19 @@
+<% if @remotesyslog.kind_of?(Array) -%>
+<% @remotesyslog.uniq.each do |val| -%>
+<% if @discard -%>
+<%= @facility %> ~
+<% elsif val -%>
+<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= val %>
+<% else -%>
+<%= @facility %> <%= @filename %>
+<% end -%>
+<% end %>
+<% else -%>
+<% if @discard -%>
+<%= @facility %> ~
+<% elsif @remotesyslog -%>
+<%= @facility %> <% if @remotesyslogtype=="udp" %>@<% else %>@@<% end %><%= @remotesyslog %>
+<% else -%>
+<%= @facility %> <%= @filename %>
+<% end -%>
+<% end -%>

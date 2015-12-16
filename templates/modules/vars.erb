@@ -1,0 +1,4 @@
+#puppet managed file
+<% @vars.each do |key, val| %>
+$<%= key %> <%= val %>
+<% end %>
