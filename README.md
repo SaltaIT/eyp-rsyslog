@@ -33,23 +33,39 @@ management, etc.) this is the time to mention it.
 
 ### What rsyslog affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* rsyslog modules:
+  - imfile
+  - imtcp
+  - imudp
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+This module requires pluginsync enabled and eyp/nsswitch module installed
 
 ### Beginning with rsyslog
 
-The very basic steps needed for a user to get the module up and running.
+rsyslog example:
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+```yaml
+classes:
+  - rsyslog
+rsyslog::modules:
+  - imfile
+  - imtcp
+  - imudp
+rsyslogfacilities:
+  any:
+    facility: '*.*'
+    remotesyslogtype: tcp
+    remotesyslog: "%{hiera('systemadmin::syslogservers')}"
+rsyslogimfiles:
+  /opt/tomcat8080/logs/catalina.out:
+    inputfiletag: catalina.out
+    statefile: stat-catalina1
+  /opt/tomcat8080/logs/sso.log:
+    inputfiletag: sso.log
+    statefile: stat-sso1
+```
 
 ## Usage
 
@@ -65,15 +81,9 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on CentOS 6
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+We are pushing to have acceptance testing in place, so any new feature should
+have some test to check both presence and absence of any feature
