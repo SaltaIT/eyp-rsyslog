@@ -4,6 +4,7 @@ class rsyslog	(
 			$forwardformat     = false,
 			$modules           = undef,
 			$vars              = undef,
+			$workdirectory     = '/var/lib/rsyslog',
 		) inherits params {
 
 	if ! defined(Class['syslogng'])

@@ -6,7 +6,16 @@ class rsyslog::params {
 		{
 			case $::operatingsystemrelease
 			{
-				/^[67].*$/: { $rsyslogconf_template='rsyslog/rsyslogconfRH.erb' }
+				/^6.*$/:
+				{
+					$rsyslogconf_template='rsyslog/rsyslogconf.erb'
+					$system_im='imklog'
+				}
+				/^7.*$/:
+				{
+					$rsyslogconf_template='rsyslog/rsyslogconf.erb'
+					$system_im='imjournal'
+				}
 				default: { fail('Unsupported RHEL/CentOS version!')  }
 			}
 		}
