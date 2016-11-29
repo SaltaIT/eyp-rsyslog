@@ -1,13 +1,13 @@
-define rsyslog::facility (
-				$facility,
-				$facilityname     = $name,
-				$filename         = undef,
-				$discard          = false,
-				$basedir          = '/etc/rsyslog.d',
-				$remotesyslog     = undef,
-				$remotesyslogtype = 'udp',
-				$order            = '10',
-			) {
+define rsyslog::facility(
+													$facility,
+													$facilityname     = $name,
+													$filename         = undef,
+													$discard          = false,
+													$basedir          = '/etc/rsyslog.d',
+													$remotesyslog     = undef,
+													$remotesyslogtype = 'udp',
+													$order            = '10',
+												) {
 	validate_re($remotesyslogtype, [ '^udp$', '^tcp$'], "not a valid protocol")
 
 	if ! defined(Class['syslogng'])
