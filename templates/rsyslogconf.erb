@@ -1,4 +1,4 @@
-# rsyslog v5 configuration file
+# rsyslog configuration file
 #
 # puppet managed file - DO NOT MODIFY
 #
@@ -32,6 +32,11 @@ $ActionForwardDefaultTemplate RSYSLOG_ForwardFormat
 <% end -%>
 # Include all config files in /etc/rsyslog.d/
 $IncludeConfig /etc/rsyslog.d/*.conf
+
+<% if defined?(scope.lookupvar('rsyslog::params::imjournalstatefile')) -%>
+# File to store the position in the journal
+$IMJournalStateFile <%= scope.lookupvar('rsyslog::params::imjournalstatefile') %>
+<% end -%>
 
 
 #### RULES ####

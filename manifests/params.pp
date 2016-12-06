@@ -11,12 +11,14 @@ class rsyslog::params {
 					$rsyslogconf_template='rsyslog/rsyslogconf.erb'
 					$system_im='imklog'
 					$systemlogsocketname=undef
+					$imjournalstatefile=undef
 				}
 				/^7.*$/:
 				{
 					$rsyslogconf_template='rsyslog/rsyslogconf.erb'
 					$system_im='imjournal'
 					$systemlogsocketname='/run/systemd/journal/syslog'
+					$imjournalstatefile='imjournal.state'
 				}
 				default: { fail('Unsupported RHEL/CentOS version!')  }
 			}
