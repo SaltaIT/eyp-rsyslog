@@ -73,7 +73,7 @@ class rsyslog	(
 
 		if($rsyslog::params::systemlogsocketname!=undef)
 		{
-			file { '/etc/rsyslog.d/vars.conf':
+			file { '/etc/rsyslog.d/listen.conf':
 				ensure  => 'present',
 				owner   => 'root',
 				group   => 'root',
