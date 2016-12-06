@@ -7,6 +7,7 @@ class rsyslog	(
 								$workdirectory     = '/var/lib/rsyslog',
 								$rsyslogd_purge    = true,
 								$rsyslogd_recurse  = true,
+								$emerg             = $rsyslog::params::emerg_default,
 							) inherits params {
 
 	if ! defined(Class['syslogng'])
