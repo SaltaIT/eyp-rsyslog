@@ -33,15 +33,15 @@ $ActionForwardDefaultTemplate RSYSLOG_ForwardFormat
 # Include all config files in /etc/rsyslog.d/
 $IncludeConfig /etc/rsyslog.d/*.conf
 
-<% if defined?(scope.lookupvar('rsyslog::params::omitlocallogging')) -%>
+<% if defined?(@omitlocallogging) -%>
 # Turn off message reception via local log socket;
 # local messages are retrieved through imjournal now.
-$OmitLocalLogging <%= scope.lookupvar('rsyslog::params::omitlocallogging') %>
+$OmitLocalLogging <%= scope.function_bool2onoff([@omitlocallogging]) %>
 <% end -%>
 
-<% if defined?(scope.lookupvar('rsyslog::params::imjournalstatefile')) -%>
+<% if defined?(@imjournalstatefile) -%>
 # File to store the position in the journal
-$IMJournalStateFile <%= scope.lookupvar('rsyslog::params::imjournalstatefile') %>
+$IMJournalStateFile <%= @imjournalstatefile %>
 <% end -%>
 
 

@@ -1,13 +1,15 @@
 class rsyslog	(
-								$ratelimitinterval = '0',
-								$servicestate      = 'running',
-								$forwardformat     = false,
-								$modules           = undef,
-								$vars              = undef,
-								$workdirectory     = '/var/lib/rsyslog',
-								$rsyslogd_purge    = true,
-								$rsyslogd_recurse  = true,
-								$emerg             = $rsyslog::params::emerg_default,
+								$ratelimitinterval  = '0',
+								$servicestate       = 'running',
+								$forwardformat      = false,
+								$modules            = undef,
+								$vars               = undef,
+								$workdirectory      = '/var/lib/rsyslog',
+								$rsyslogd_purge     = true,
+								$rsyslogd_recurse   = true,
+								$emerg              = $rsyslog::params::emerg_default,
+								$omitlocallogging   = $rsyslog::params::omitlocallogging_default,
+								$imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
 							) inherits params {
 
 	if ! defined(Class['syslogng'])
