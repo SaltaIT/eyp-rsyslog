@@ -12,6 +12,7 @@ class rsyslog::params {
 					$system_im='imklog'
 					$systemlogsocketname=undef
 					$imjournalstatefile=undef
+					$omitlocallogging=undef
 				}
 				/^7.*$/:
 				{
@@ -19,6 +20,7 @@ class rsyslog::params {
 					$system_im='imjournal'
 					$systemlogsocketname='/run/systemd/journal/syslog'
 					$imjournalstatefile='imjournal.state'
+					$omitlocallogging=false
 				}
 				default: { fail('Unsupported RHEL/CentOS version!')  }
 			}
