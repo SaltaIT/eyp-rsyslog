@@ -1,5 +1,6 @@
 class rsyslog	(
 								$ratelimitinterval  = '0',
+								$filecreatemode     = undef,
 								$servicestate       = 'running',
 								$forwardformat      = false,
 								$modules            = undef,

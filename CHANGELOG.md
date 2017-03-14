@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.24
+
+* added FileCreateMode support
+
 ## 0.1.23
 
 * dropped tag support
