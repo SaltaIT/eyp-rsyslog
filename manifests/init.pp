@@ -12,6 +12,7 @@ class rsyslog	(
 								$omitlocallogging   = $rsyslog::params::omitlocallogging_default,
 								$imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
 								$rsyslogconf_mode   = '0644',
+								$rsyslogd_mode      = '0755',
 							) inherits params {
 
 	if ! defined(Class['syslogng'])
@@ -54,7 +55,7 @@ class rsyslog	(
 			ensure  => 'directory',
 			owner   => 'root',
 			group   => 'root',
-			mode    => '0755',
+			mode    => $rsyslogd_mode,
 			purge   => $rsyslogd_purge,
 			recurse => $rsyslogd_recurse,
 			require => Package['rsyslog'],
