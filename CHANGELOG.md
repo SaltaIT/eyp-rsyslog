@@ -2,7 +2,7 @@
 
 ## 0.1.25
 
-* added a variable to be able to configure rsyslog.conf mode
+* added a variable to be able to set config file's mode
 
 ## 0.1.24
 
