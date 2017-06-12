@@ -11,6 +11,7 @@ class rsyslog	(
 								$emerg              = $rsyslog::params::emerg_default,
 								$omitlocallogging   = $rsyslog::params::omitlocallogging_default,
 								$imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
+								$rsyslogconf_mode   = '0644',
 							) inherits params {
 
 	if ! defined(Class['syslogng'])
@@ -63,7 +64,7 @@ class rsyslog	(
 			ensure  => 'present',
 			owner   => 'root',
 			group   => 'root',
-			mode    => '0644',
+			mode    => $rsyslogconf_mode,
 			content => template($rsyslog::params::rsyslogconf_template),
 			notify  => Service['rsyslog'],
 			require => [Package['rsyslog'],File['/etc/rsyslog.d']],
