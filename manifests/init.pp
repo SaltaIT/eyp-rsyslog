@@ -90,8 +90,8 @@ class rsyslog  (
     if(!empty($log_files))
     {
       file { $log_files:
-        ensure  => 'present',
-        mode    => $log_files_mode,
+        ensure => 'present',
+        mode   => $log_files_mode,
       }
     }
 
