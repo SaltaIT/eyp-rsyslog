@@ -8,7 +8,7 @@ define rsyslog::facility(
                           $remotesyslogtype = 'udp',
                           $order            = '10',
                         ) {
-  validate_re($remotesyslogtype, [ '^udp$', '^tcp$'], "not a valid protocol")
+  validate_re($remotesyslogtype, [ '^udp$', '^tcp$'], "not a valid protocol: ${remotesyslogtype}")
 
   if ! defined(Class['syslogng'])
   {

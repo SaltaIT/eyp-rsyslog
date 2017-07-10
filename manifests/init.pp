@@ -13,7 +13,7 @@ class rsyslog  (
                 $imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
                 $rsyslogconf_mode   = '0644',
                 $rsyslogd_mode      = '0755',
-              ) inherits params {
+              ) inherits rsyslog::params {
 
   if ! defined(Class['syslogng'])
   {

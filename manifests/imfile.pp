@@ -26,7 +26,7 @@ define rsyslog::imfile(
       notify  => Service['rsyslog'],
     }
 
-    concat::fragment { "header imfiles":
+    concat::fragment { 'header imfiles':
       target  => '/etc/rsyslog.d/imfiles.conf',
       order   => '00',
       content => "#puppet managed file\n",
