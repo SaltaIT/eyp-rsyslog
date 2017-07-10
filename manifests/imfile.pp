@@ -6,9 +6,9 @@ define rsyslog::imfile(
                         $inputfilename = $name,
                       ) {
   if ! defined(Class['rsyslog'])
-	{
-		fail('You must include the rsyslog base class before using any rsyslog defined resources')
-	}
+  {
+    fail('You must include the rsyslog base class before using any rsyslog defined resources')
+  }
 
   if ! ('imfile' in $rsyslog::modules)
   {
