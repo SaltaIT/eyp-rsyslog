@@ -13,8 +13,8 @@ class rsyslog  (
                 $imjournalstatefile = $rsyslog::params::imjournalstatefile_default,
                 $rsyslogconf_mode   = '0644',
                 $rsyslogd_mode      = '0755',
-								$log_files          = [],
-								$log_files_mode     = '0640',
+                $log_files          = [],
+                $log_files_mode     = '0640',
               ) inherits rsyslog::params {
 
   if ! defined(Class['syslogng'])
@@ -87,13 +87,13 @@ class rsyslog  (
       }
     }
 
-		if(!empty($log_files))
-		{
-			file { $log_files:
-				ensure  => 'present',
-				mode    => $log_files_mode,
-			}
-		}
+    if(!empty($log_files))
+    {
+      file { $log_files:
+        ensure  => 'present',
+        mode    => $log_files_mode,
+      }
+    }
 
     service { 'rsyslog':
       ensure  => $servicestate,
