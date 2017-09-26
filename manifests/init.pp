@@ -1,5 +1,5 @@
 # @param messages_facilities List of facilities for /var/log/messages default: *.info, mail.none, authpriv.none, cron.none
-class rsyslog (
+class rsyslog(
                 $ratelimitinterval   = '0',
                 $filecreatemode      = undef,
                 $servicestate        = 'running',
