@@ -1,4 +1,4 @@
-# @param messages_facilities List of facilities for /var/log/messages: *.info, mail.none, authpriv.none, cron.none
+# @param messages_facilities List of facilities for /var/log/messages default: *.info, mail.none, authpriv.none, cron.none
 class rsyslog  (
                 $ratelimitinterval   = '0',
                 $filecreatemode      = undef,
