@@ -98,10 +98,21 @@ class rsyslog(
       }
     }
 
-    service { 'rsyslog':
-      ensure  => $service_ensure,
-      enable  => $service_enable,
-      require => Package['rsyslog'],
+    if(defined(Class['::syslogng']))
+    {
+      service { 'rsyslog':
+        ensure  => 'stopped',
+        enable  => false,
+        require => Package['rsyslog'],
+      }
+    }
+    else
+    {
+      service { 'rsyslog':
+        ensure  => $service_ensure,
+        enable  => $service_enable,
+        require => Package['rsyslog'],
+      }
     }
   }
 }

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.2
+
+* syslogng compatibility (disable rsyslog when class syslogng is loaded)
+
 ## 0.2.1
 
 * Updated dependencies
