@@ -2,7 +2,8 @@
 class rsyslog(
                 $ratelimitinterval   = '0',
                 $filecreatemode      = undef,
-                $servicestate        = 'running',
+                $service_ensure        = 'running',
+                $service_enable        = true,
                 $forwardformat       = false,
                 $modules             = undef,
                 $vars                = undef,
@@ -98,8 +99,8 @@ class rsyslog(
     }
 
     service { 'rsyslog':
-      ensure  => $servicestate,
-      enable  => true,
+      ensure  => $service_ensure,
+      enable  => $service_enable,
       require => Package['rsyslog'],
     }
   }

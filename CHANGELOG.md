@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.0
+
+* **INCOMPATIBLE CHANGES**:
+  - Renamed **rsyslog::servicestate** to **rsyslog::service_ensure**
+
 ## 0.1.27
 
 * added configurable messages facilities
