@@ -29,5 +29,9 @@ describe 'rsyslog class' do
       it { is_expected.to be_running }
     end
 
+    describe package('rsyslog') do
+      it { is_expected.to be_installed }
+    end
+
   end
 end
