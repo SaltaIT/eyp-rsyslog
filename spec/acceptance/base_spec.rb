@@ -21,7 +21,7 @@ describe 'rsyslog class' do
 
     describe file('/etc/rsyslog.conf') do
       it { should be_file }
-      its(:content) { should match '$FileCreateMode 0640' }
+      its(:content) { should match 'FileCreateMode 0640' }
     end
 
     describe service('rsyslog') do
